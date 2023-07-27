@@ -29,4 +29,4 @@ El proyecto tiene un arquitectura muy simple, consta de dos archivos:
 
 ## Ejecución
 
-Abrir el archivo **index.html**, o puede revisarlo desde el siguiente enlace: **https://github.com/angelluce**
+Abrir el archivo **index.html**, o puede revisarlo desde el siguiente enlace: **https://juego-vida.web.app/**
