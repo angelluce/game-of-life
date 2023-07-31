@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d');
 const resolution = 10;
 const cols = canvas.width / resolution;
 const rows = canvas.height / resolution;
+let patternSelect = document.getElementById('patternSelect');
 let cellColor = '#000000';
 let backgroundColor = '#ffffff';
 
@@ -18,15 +19,41 @@ function startGame() {
     // Crear una cuadrícula vacía
     let grid = createEmptyGrid();
 
-    // Establecer el color de las células y fonde
+    // Establecer parámetros iniciales
+    let pattern = patternSelect.value;
     cellColor = document.getElementById('cellColor').value;
     backgroundColor = document.getElementById('backgroundColor').value;
     canvas.style.backgroundColor = backgroundColor;
 
-    // Generar un patrón inicial aleatorio
-    for (let x = 0; x < cols; x++) {
-        for (let y = 0; y < rows; y++) {
-            grid[x][y] = Math.random() < 0.5 ? 0 : 1;
+    // Generar patrones
+    if (pattern === 'blinker') {
+        grid[5][3] = 1;
+        grid[5][4] = 1;
+        grid[5][5] = 1;
+    } else if (pattern === 'block') {
+        grid[10][10] = 1;
+        grid[10][11] = 1;
+        grid[11][10] = 1;
+        grid[11][11] = 1;
+    } else if (pattern === 'glider') {
+        grid[25][3] = 1;
+        grid[26][4] = 1;
+        grid[24][5] = 1;
+        grid[25][5] = 1;
+        grid[26][5] = 1;
+    } else if (pattern === 'diehard') {
+        grid[35][20] = 1;
+        grid[36][20] = 1;
+        grid[36][21] = 1;
+        grid[40][21] = 1;
+        grid[41][19] = 1;
+        grid[41][21] = 1;
+        grid[42][21] = 1;
+    } else {
+        for (let x = 0; x < cols; x++) {
+            for (let y = 0; y < rows; y++) {
+                grid[x][y] = Math.random() < 0.5 ? 0 : 1;
+            }
         }
     }
 
